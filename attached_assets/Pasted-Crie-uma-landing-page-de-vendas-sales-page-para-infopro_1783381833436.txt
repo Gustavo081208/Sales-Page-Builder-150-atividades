@@ -1,0 +1,75 @@
+Crie uma landing page de vendas (sales page) para infoproduto, otimizada para conversão 
+e mobile-first.
+
+PRODUTO: Infoproduto digital — "150 Atividades para Anos Iniciais" (PDF de atividades 
+prontas para imprimir/aplicar)
+NICHO/RECORTE ESPECÍFICO: [DEFINIR — ex: alfabetização, matemática, multidisciplinar, 
+alinhado à BNCC — sem isso a headline fica genérica]
+AVATAR PRINCIPAL: [DEFINIR — professoras de anos iniciais OU pais/responsáveis OU ambos]
+PREÇO: [DEFINIR]
+
+STACK: HTML/CSS/JS puro ou React (Replit padrão), sem dependências pesadas. 
+Single page, responsiva, mobile-first (testar em 375px e desktop).
+
+SEÇÕES (ordem fixa, sem repetir blocos):
+
+1. HERO
+   - Headline focada em RESULTADO, não em quantidade (ex: não "150 atividades", 
+     e sim o que o professor/pai consegue fazer com elas)
+   - Sub-headline de 1 linha
+   - 1 único bloco de prova social numérica (ex: "X clientes" — usar só 1 número, 
+     não múltiplos números inconsistentes)
+   - 2-3 bullets de benefício (ex: "PDF alta resolução", "Pronto para imprimir", 
+     "Acesso imediato")
+   - Preço em destaque + botão CTA "Comprar agora" (cor de contraste alto)
+   - [OPCIONAL] selo de urgência — só usar se for prazo real, não data dinâmica 
+     disfarçada de prazo fixo
+
+2. PREVIEW DO MATERIAL
+   - Carrossel horizontal com prints/mockups das atividades
+   - Setas de navegação
+
+3. DESCRIÇÃO DO CONTEÚDO
+   - Parágrafo curto: o que o material cobre
+   - Lista única (cards/pills coloridos) dos módulos/temas inclusos, 
+     cada um com nº de páginas — SEM duplicar nenhum bloco
+
+4. PROVA SOCIAL EM ÍCONES (grid 2 colunas)
+   - Avaliações (mesmo número usado na hero — não inventar um segundo número)
+   - Acesso vitalício
+   - Garantia de X dias (só prometer o que será cumprido)
+
+5. AUTORIDADE
+   - "Conteúdo profissional" + "Acesse de qualquer lugar" — texto direto, 
+     sem adjetivo vazio ("revolucionário", "incrível")
+
+6. PARA QUEM É
+   - Escolher UM avatar principal (não diluir entre professor e pai na mesma seção, 
+     a menos que a oferta realmente sirva igual pros dois)
+
+7. DEPOIMENTOS
+   - Mínimo 3 depoimentos reais e distintos, com nome + foto/avatar
+
+8. REDES SOCIAIS
+   - Ícones com link
+
+9. RESPONSÁVEL/AUTORA
+   - Foto, nome, formação (2-3 linhas), tempo de experiência
+
+10. FOOTER
+    - Direitos reservados + ano atual
+
+REGRAS:
+- Paleta de cores: 1 cor de destaque pro CTA, resto neutro. Definir como variáveis 
+  CSS no topo.
+- Nenhum texto ou bloco duplicado entre seções.
+- Todo número de prova social deve ficar como constante no topo do código com 
+  comentário "// SUBSTITUIR por número real" — nunca espalhado/fixo no meio do HTML.
+- CTA deve aparecer no mínimo 3x: hero, meio da página, final.
+- Build e teste responsivo antes de finalizar.
+
+CONTEÚDO REAL A INSERIR (preencher antes de enviar):
+- Lista real dos 150 itens/módulos agrupados por tema
+- Depoimentos reais (não fabricar)
+- Preço real
+- Dados reais de formação/experiência da autora
