@@ -367,41 +367,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. DEPOIMENTOS */}
-      <section className="py-24 px-4 bg-background">
-        <div className="max-w-6xl mx-auto">
-          <motion.h2 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-            className="text-3xl md:text-4xl font-extrabold text-center mb-16"
-          >
-            O que as professoras estão dizendo
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <TestimonialCard 
-              name="Fernanda Lima" 
-              city="Goiânia-GO" 
-              initials="FL" 
-              color="bg-pink-500" 
-              text="Comprei ontem e já imprimi as atividades da semana toda. Me salvou um tempo absurdo! A qualidade visual das folhas é linda, as crianças amaram."
-            />
-            <TestimonialCard 
-              name="Carla Souza" 
-              city="São Paulo-SP" 
-              initials="CS" 
-              color="bg-blue-500" 
-              text="Excelente material. Tudo bem separadinho por tema, super fácil de achar o que eu preciso dar na aula. Pelo preço, entregou muito mais do que eu esperava."
-            />
-            <TestimonialCard 
-              name="Márcia Rodrigues" 
-              city="Fortaleza-CE" 
-              initials="MR" 
-              color="bg-green-500" 
-              text="Minha turma do 2º ano estava com dificuldade em algumas sílabas complexas. As atividades focadas nisso foram perfeitas. Recomendo para todas as colegas."
-            />
-          </div>
-        </div>
-      </section>
-
       {/* 8. ESCOLHA SUA OFERTA */}
       <section className="py-24 px-4 bg-background border-t border-border/40">
         <div className="max-w-5xl mx-auto">
@@ -505,7 +470,42 @@ export default function App() {
         </div>
       </section>
 
-      {/* 9. FOOTER */}
+      {/* 9. DEPOIMENTOS */}
+      <section className="py-24 px-4 bg-background border-t border-border/40">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2 
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+            className="text-3xl md:text-4xl font-extrabold text-center mb-16"
+          >
+            O que as professoras estão dizendo
+          </motion.h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <TestimonialCard 
+              name="Fernanda Lima" 
+              city="Goiânia-GO" 
+              initials="FL" 
+              color="bg-pink-500" 
+              text="Comprei ontem e já imprimi as atividades da semana toda. Me salvou um tempo absurdo! A qualidade visual das folhas é linda, as crianças amaram."
+            />
+            <TestimonialCard 
+              name="Carla Souza" 
+              city="São Paulo-SP" 
+              initials="CS" 
+              color="bg-blue-500" 
+              text="Excelente material. Tudo bem separadinho por tema, super fácil de achar o que eu preciso dar na aula. Pelo preço, entregou muito mais do que eu esperava."
+            />
+            <TestimonialCard 
+              name="Márcia Rodrigues" 
+              city="Fortaleza-CE" 
+              initials="MR" 
+              color="bg-green-500" 
+              text="Minha turma do 2º ano estava com dificuldade em algumas sílabas complexas. As atividades focadas nisso foram perfeitas. Recomendo para todas as colegas."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 10. FOOTER */}
       <footer className="bg-foreground text-background py-12 px-4 text-center border-t-8 border-primary">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
           <div className="flex items-center gap-3 opacity-90">
