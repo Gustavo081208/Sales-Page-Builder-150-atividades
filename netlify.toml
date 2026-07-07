@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install && pnpm --filter @workspace/landing-page run build"
+  command = "pnpm install --no-frozen-lockfile && pnpm --filter @workspace/landing-page run build"
   publish = "artifacts/landing-page/dist"
 
 [build.environment]
