@@ -45,8 +45,13 @@ interface TestimonialCardProps {
   text: string;
 }
 
+const scrollToOferta = () => {
+  document.getElementById("oferta")?.scrollIntoView({ behavior: "smooth" });
+};
+
 const CtaButton = ({ className = "" }: CtaButtonProps) => (
   <motion.button 
+    onClick={scrollToOferta}
     whileHover={{ scale: 1.03 }}
     whileTap={{ scale: 0.97 }}
     className={`w-full sm:w-auto bg-green-500 hover:bg-green-400 text-white font-heading font-bold text-lg md:text-xl py-4 px-8 md:px-10 rounded-full shadow-[0_8px_20px_-6px_rgba(34,197,94,0.6)] transition-all flex items-center justify-center gap-3 ${className}`}
@@ -368,7 +373,7 @@ export default function App() {
       </section>
 
       {/* 8. ESCOLHA SUA OFERTA */}
-      <section className="py-24 px-4 bg-background border-t border-border/40">
+      <section id="oferta" className="py-24 px-4 bg-background border-t border-border/40">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
