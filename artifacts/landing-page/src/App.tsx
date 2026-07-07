@@ -7,6 +7,12 @@ import {
   Heart, Download
 } from 'lucide-react';
 
+import imgFonologica from '@assets/generated_images/atividade-fonologica.jpg';
+import imgCaligrafia from '@assets/generated_images/atividade-caligrafia.jpg';
+import imgLeitura from '@assets/generated_images/atividade-leitura.jpg';
+import imgSilabas from '@assets/generated_images/atividade-silabas.jpg';
+import imgAlfabeto from '@assets/generated_images/atividade-alfabeto.jpg';
+
 const CLIENTES = 2389; // SUBSTITUIR por número real
 const PRECO = "R$9,90"; // SUBSTITUIR por preço real
 
@@ -77,11 +83,11 @@ const PreviewCarousel = () => {
   }, [emblaApi])
 
   const slides = [
-    { title: "Consciência Fonológica", desc: "Rimas, aliterações e sons iniciais", color: "bg-amber-100", textColor: "text-amber-800", icon: <Type className="w-8 h-8 mb-3" /> },
-    { title: "Coordenação Motora", desc: "Traçados, labirintos e recortes", color: "bg-teal-100", textColor: "text-teal-800", icon: <Pencil className="w-8 h-8 mb-3" /> },
-    { title: "Leitura Inicial", desc: "Textos curtos com interpretação", color: "bg-rose-100", textColor: "text-rose-800", icon: <BookOpen className="w-8 h-8 mb-3" /> },
-    { title: "Matemática Básica", desc: "Números, quantidades e formas", color: "bg-indigo-100", textColor: "text-indigo-800", icon: <Puzzle className="w-8 h-8 mb-3" /> },
-    { title: "Escrita Criativa", desc: "Formação de palavras e frases", color: "bg-sky-100", textColor: "text-sky-800", icon: <FileText className="w-8 h-8 mb-3" /> },
+    { title: "Consciência Fonológica", desc: "Rimas, aliterações e sons iniciais", img: imgFonologica, accent: "from-amber-400 to-orange-400" },
+    { title: "Caligrafia e Traçado", desc: "Traçados, labirintos e coordenação motora", img: imgCaligrafia, accent: "from-teal-400 to-cyan-400" },
+    { title: "Leitura e Interpretação", desc: "Textos curtos com compreensão leitora", img: imgLeitura, accent: "from-rose-400 to-pink-400" },
+    { title: "Sílabas e Palavras", desc: "Formação silábica e reconhecimento de palavras", img: imgSilabas, accent: "from-violet-400 to-indigo-400" },
+    { title: "Reconhecimento do Alfabeto", desc: "Letras maiúsculas, minúsculas e seus sons", img: imgAlfabeto, accent: "from-emerald-400 to-green-400" },
   ];
 
   return (
@@ -89,22 +95,27 @@ const PreviewCarousel = () => {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex -ml-4 py-6">
           {slides.map((slide, index) => (
-            <div key={index} className="flex-[0_0_85%] min-w-0 pl-4 md:flex-[0_0_45%] lg:flex-[0_0_33.33%]">
-               <motion.div 
-                 whileHover={{ y: -5 }}
-                 className={`h-[22rem] rounded-[2rem] p-6 flex flex-col items-center justify-center text-center ${slide.color} ${slide.textColor} shadow-sm border border-black/5 relative overflow-hidden group transition-all`}
-               >
-                  <div className="absolute inset-x-8 top-1/2 bottom-8 opacity-20 flex flex-col gap-6 border-t-[3px] border-current pt-6">
-                    <div className="border-t-[3px] border-current w-full"></div>
-                    <div className="border-t-[3px] border-current w-full"></div>
-                    <div className="border-t-[3px] border-current w-4/5 mx-auto"></div>
+            <div key={index} className="flex-[0_0_80%] min-w-0 pl-4 md:flex-[0_0_42%] lg:flex-[0_0_33.33%]">
+              <motion.div
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="rounded-[2rem] overflow-hidden shadow-md border border-black/8 bg-white group cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative h-[22rem] overflow-hidden">
+                  <img
+                    src={slide.img}
+                    alt={slide.title}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                  {/* gradient overlay at bottom */}
+                  <div className={`absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t ${slide.accent} opacity-80`} />
+                  <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                    <p className="font-heading font-extrabold text-base leading-snug drop-shadow">{slide.title}</p>
+                    <p className="text-xs font-semibold opacity-90 mt-0.5 drop-shadow">{slide.desc}</p>
                   </div>
-                  <div className="z-10 bg-white/90 p-6 rounded-[1.5rem] backdrop-blur-md shadow-sm border border-white flex flex-col items-center transform group-hover:scale-[1.03] transition-transform duration-300 w-full max-w-[16rem]">
-                    {slide.icon}
-                    <h3 className="font-heading font-bold text-[1.1rem] leading-snug mb-2">{slide.title}</h3>
-                    <p className="text-sm font-semibold opacity-80">{slide.desc}</p>
-                  </div>
-               </motion.div>
+                </div>
+              </motion.div>
             </div>
           ))}
         </div>
