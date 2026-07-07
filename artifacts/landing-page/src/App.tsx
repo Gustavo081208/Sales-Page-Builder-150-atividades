@@ -4,7 +4,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { 
   CheckCircle2, Star, Smartphone, ChevronLeft, 
   ChevronRight, BookOpen, Pencil, Type, Lightbulb, Puzzle, FileText,
-  Heart, Download
+  Heart, Download, Zap, Crown, Gift, ClipboardList, FlaskConical, LayoutGrid, CalendarDays
 } from 'lucide-react';
 
 import imgFonologica from '@assets/generated_images/atividade-fonologica.jpg';
@@ -15,6 +15,10 @@ import imgAlfabeto from '@assets/generated_images/atividade-alfabeto.jpg';
 
 const CLIENTES = 2389; // SUBSTITUIR por número real
 const PRECO = "R$9,90"; // SUBSTITUIR por preço real
+const PRECO_BASICO = "R$9,90"; // SUBSTITUIR por preço real
+const PRECO_BASICO_DE = "R$19,90"; // SUBSTITUIR por preço original (riscado)
+const PRECO_PREMIUM = "R$14,90"; // SUBSTITUIR por preço real
+const PRECO_PREMIUM_DE = "R$39,90"; // SUBSTITUIR por preço original (riscado)
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -398,49 +402,118 @@ export default function App() {
         </div>
       </section>
 
-      {/* 8. CTA REPETIDO */}
-      <section className="py-24 px-4 bg-white border-t border-border/40">
-        <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-          <motion.div 
+      {/* 8. ESCOLHA SUA OFERTA */}
+      <section className="py-24 px-4 bg-background border-t border-border/40">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-            className="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mb-8"
+            className="text-center mb-14"
           >
-            <Download className="w-10 h-10 text-secondary" />
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Escolha sua oferta</h2>
+            <p className="text-lg text-foreground/70 font-medium">Acesso imediato após a compra. Garantia de 7 dias.</p>
           </motion.div>
-          <motion.h2 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-            className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight"
-          >
-            Tudo pronto para o seu próximo passo?
-          </motion.h2>
-          <motion.p
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-            className="text-xl text-foreground/70 font-medium mb-12 max-w-xl"
-          >
-            Acesse agora as 150 atividades e recupere o seu tempo livre.
-          </motion.p>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="flex flex-col items-center gap-4">
-            <CtaButton className="!px-12 !py-5 !text-xl md:!text-2xl" />
-          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6 items-start">
+
+            {/* CARD BÁSICO */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+              className="bg-white border border-border rounded-3xl p-8 flex flex-col gap-6 shadow-sm"
+            >
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-foreground/50 mb-1">Pacote Básico</p>
+                <p className="text-sm text-foreground/40 line-through">{PRECO_BASICO_DE}</p>
+                <p className="text-5xl font-extrabold text-foreground leading-none mt-1">
+                  {PRECO_BASICO}
+                </p>
+                <p className="text-sm text-foreground/50 mt-1">pagamento único</p>
+              </div>
+
+              <ul className="flex flex-col gap-3">
+                {[
+                  { icon: <FileText className="w-5 h-5" />, text: "150 Atividades escolares para anos iniciais" },
+                  { icon: <Zap className="w-5 h-5" />, text: "Acesso Imediato" },
+                  { icon: <CheckCircle2 className="w-5 h-5" />, text: "Garantia de 7 dias" },
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="mt-0.5 text-secondary shrink-0">{item.icon}</span>
+                    <span className="font-semibold text-foreground/80 text-sm">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+                className="w-full border-2 border-primary text-primary font-heading font-bold text-base py-4 px-6 rounded-2xl transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 className="w-5 h-5" />
+                Quero o Pacote Básico por {PRECO_BASICO}
+              </motion.button>
+            </motion.div>
+
+            {/* CARD PREMIUM */}
+            <motion.div
+              initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+              className="relative bg-[#0f172a] text-white rounded-3xl p-8 flex flex-col gap-6 shadow-xl ring-2 ring-secondary"
+            >
+              {/* Badge Mais vendido */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1">
+                <span className="bg-secondary text-white text-xs font-extrabold uppercase tracking-widest px-5 py-2 rounded-full shadow-lg whitespace-nowrap flex items-center gap-1.5">
+                  <Crown className="w-3.5 h-3.5" /> Mais vendido
+                </span>
+                <span className="text-[11px] font-semibold text-foreground/60 bg-white/90 px-3 py-0.5 rounded-full shadow-sm whitespace-nowrap">
+                  +500 pessoas já escolheram essa oferta
+                </span>
+              </div>
+
+              <div className="mt-4">
+                <p className="text-sm font-bold uppercase tracking-widest text-white/50 mb-1">Pacote Premium</p>
+                <p className="text-sm text-white/30 line-through">{PRECO_PREMIUM_DE}</p>
+                <p className="text-5xl font-extrabold leading-none mt-1">{PRECO_PREMIUM}</p>
+                <p className="text-sm text-white/40 mt-1">pagamento único</p>
+              </div>
+
+              <ul className="flex flex-col gap-3">
+                {[
+                  { icon: <FileText className="w-5 h-5" />, text: "150 Atividades escolares para anos iniciais", base: true },
+                  { icon: <Zap className="w-5 h-5" />, text: "Acesso Imediato", base: true },
+                  { icon: <CheckCircle2 className="w-5 h-5" />, text: "Garantia de 7 dias", base: true },
+                  { icon: <Gift className="w-5 h-5" />, text: "Kit de Alfabetização Completo", base: false },
+                  { icon: <ClipboardList className="w-5 h-5" />, text: "Kit de Avaliações Prontas", base: false },
+                  { icon: <LayoutGrid className="w-5 h-5" />, text: "Kit de Recursos para Sala de Aula", base: false },
+                  { icon: <CalendarDays className="w-5 h-5" />, text: "Planejamento Anual Completo (BNCC)", base: false },
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className={`mt-0.5 shrink-0 ${item.base ? "text-white/50" : "text-secondary"}`}>{item.icon}</span>
+                    <span className={`font-semibold text-sm ${item.base ? "text-white/60" : "text-white"}`}>
+                      {!item.base && <span className="text-secondary font-bold">+ </span>}
+                      {item.text}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
+                className="w-full bg-green-500 hover:bg-green-400 text-white font-heading font-bold text-base py-4 px-6 rounded-2xl shadow-[0_8px_20px_-6px_rgba(34,197,94,0.5)] transition-all flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 className="w-5 h-5" />
+                Quero o Pacote Premium por {PRECO_PREMIUM}
+              </motion.button>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* 9. FOOTER */}
-      <footer className="bg-foreground text-background py-16 px-4 text-center border-t-8 border-primary">
-        <div className="max-w-4xl mx-auto flex flex-col items-center gap-10">
-          <div className="flex flex-col items-center gap-6">
-            <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white">Pronta para começar?</h3>
-            <CtaButton className="!shadow-none !border-2 !border-transparent hover:!border-white/20" />
-          </div>
-          
-          <div className="h-px w-full max-w-md bg-background/10 rounded-full my-4"></div>
-          
+      <footer className="bg-foreground text-background py-12 px-4 text-center border-t-8 border-primary">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
           <div className="flex items-center gap-3 opacity-90">
             <BookOpen className="w-6 h-6 text-primary" />
             <span className="font-heading font-extrabold text-xl tracking-tight">150 Atividades</span>
           </div>
           <p className="text-background/50 font-medium text-sm">
-            © 2026 150 Atividades para Anos Iniciais.<br className="md:hidden" /> Todos os direitos reservados.
+            © 2026 150 Atividades para Anos Iniciais. Todos os direitos reservados.
           </p>
         </div>
       </footer>
