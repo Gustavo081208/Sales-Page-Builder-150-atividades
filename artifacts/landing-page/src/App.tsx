@@ -7,6 +7,7 @@ import {
   Heart, Download, Zap, Crown, Gift, ClipboardList, FlaskConical, LayoutGrid, CalendarDays
 } from 'lucide-react';
 
+import SalesNotification from '@/components/SalesNotification';
 import imgFonologica from '@assets/generated_images/atividade-fonologica.jpg';
 import imgCaligrafia from '@assets/generated_images/atividade-caligrafia.jpg';
 import imgLeitura from '@assets/generated_images/atividade-leitura.jpg';
@@ -153,6 +154,7 @@ const contentPills = [
 export default function App() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/20 selection:text-primary">
+      <SalesNotification />
       
       {/* 1. HERO */}
       <section className="pt-20 pb-24 md:pt-32 md:pb-32 px-4 relative">
