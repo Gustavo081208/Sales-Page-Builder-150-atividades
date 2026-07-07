@@ -414,13 +414,16 @@ export default function App() {
                 ))}
               </ul>
 
-              <motion.button
+              <motion.a
+                href="https://pay.cakto.com.br/3dzhykc_949400"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
                 className="w-full border-2 border-primary text-primary font-heading font-bold text-base py-4 px-6 rounded-2xl transition-all hover:bg-primary hover:text-white flex items-center justify-center gap-2"
               >
                 <CheckCircle2 className="w-5 h-5" />
                 Quero o Pacote Básico por {PRECO_BASICO}
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* CARD PREMIUM */}
@@ -465,13 +468,16 @@ export default function App() {
                 ))}
               </ul>
 
-              <motion.button
+              <motion.a
+                href="https://pay.cakto.com.br/uz7iyrd_949403"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }}
                 className="w-full bg-green-500 hover:bg-green-400 text-white font-heading font-bold text-base py-4 px-6 rounded-2xl shadow-[0_8px_20px_-6px_rgba(34,197,94,0.5)] transition-all flex items-center justify-center gap-2"
               >
                 <CheckCircle2 className="w-5 h-5" />
                 Quero o Pacote Premium por {PRECO_PREMIUM}
-              </motion.button>
+              </motion.a>
             </motion.div>
           </div>
         </div>
