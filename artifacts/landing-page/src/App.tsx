@@ -287,26 +287,26 @@ export default function App() {
           >
             Material elaborado por <span className="text-secondary">especialistas em educação</span>
           </motion.h2>
-          <div className="flex flex-col md:flex-row gap-8 justify-center mb-16">
+          <div className="flex flex-col md:flex-row gap-5 justify-center mb-12 max-w-2xl mx-auto">
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="bg-white border border-border p-8 rounded-3xl flex-1 flex flex-col items-center gap-5 shadow-sm"
+              className="bg-white border border-border p-5 rounded-2xl flex-1 flex flex-col items-center gap-3 shadow-sm text-center"
             >
-              <div className="bg-secondary/10 p-4 rounded-2xl">
-                <BookOpen className="w-10 h-10 text-secondary" />
+              <div className="bg-secondary/10 p-3 rounded-xl">
+                <BookOpen className="w-7 h-7 text-secondary" />
               </div>
-              <p className="font-extrabold text-xl">Conteúdo profissional alinhado à BNCC</p>
-              <p className="text-foreground/70 font-medium">Todas as atividades possuem códigos e objetivos claros para facilitar o seu diário de classe.</p>
+              <p className="font-extrabold text-base">Conteúdo profissional alinhado à BNCC</p>
+              <p className="text-foreground/70 text-sm">Todas as atividades possuem códigos e objetivos claros para facilitar o seu diário de classe.</p>
             </motion.div>
             <motion.div 
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-              className="bg-white border border-border p-8 rounded-3xl flex-1 flex flex-col items-center gap-5 shadow-sm"
+              className="bg-white border border-border p-5 rounded-2xl flex-1 flex flex-col items-center gap-3 shadow-sm text-center"
             >
-              <div className="bg-primary/10 p-4 rounded-2xl">
-                <Smartphone className="w-10 h-10 text-primary" />
+              <div className="bg-primary/10 p-3 rounded-xl">
+                <Smartphone className="w-7 h-7 text-primary" />
               </div>
-              <p className="font-extrabold text-xl">Acesse de qualquer lugar, a qualquer hora</p>
-              <p className="text-foreground/70 font-medium">Baixe o PDF diretamente no seu celular ou computador. Imprima só o que for usar no dia.</p>
+              <p className="font-extrabold text-base">Acesse de qualquer lugar, a qualquer hora</p>
+              <p className="text-foreground/70 text-sm">Baixe o PDF diretamente no seu celular ou computador. Imprima só o que for usar no dia.</p>
             </motion.div>
           </div>
           
