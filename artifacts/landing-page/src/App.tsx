@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
-import { motion } from 'framer-motion';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { 
   CheckCircle2, Star, Smartphone, ChevronLeft, 
   ChevronRight, BookOpen, Pencil, Type, Lightbulb, Puzzle, FileText,
-  Heart, Download, Zap, Crown, Gift, ClipboardList, FlaskConical, LayoutGrid, CalendarDays
+  Heart, Zap, Crown, Gift, ClipboardList, LayoutGrid, CalendarDays, ShoppingCart, Clock
 } from 'lucide-react';
 
 import SalesNotification from '@/components/SalesNotification';
@@ -152,12 +152,58 @@ const contentPills = [
 ];
 
 export default function App() {
+  const heroRef = useRef<HTMLElement>(null);
+  const [showFloating, setShowFloating] = useState(false);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowFloating(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/20 selection:text-primary">
       <SalesNotification />
+
+      {/* BANNER DE URGÊNCIA */}
+      <div className="bg-primary text-white text-center py-2.5 px-4 text-sm font-bold flex items-center justify-center gap-2">
+        <span className="relative flex h-2.5 w-2.5 shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        </span>
+        Oferta especial por tempo limitado — garanta o seu antes que acabe!
+        <Clock className="w-4 h-4 ml-1 hidden sm:inline" />
+      </div>
+
+      {/* BOTÃO FLUTUANTE MOBILE */}
+      <AnimatePresence>
+        {showFloating && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="fixed bottom-0 left-0 right-0 z-50 md:hidden p-3 bg-white/95 backdrop-blur-sm border-t border-border shadow-2xl"
+          >
+            <motion.button
+              onClick={scrollToOferta}
+              whileTap={{ scale: 0.97 }}
+              className="w-full bg-green-500 hover:bg-green-400 text-white font-heading font-bold text-base py-4 px-6 rounded-2xl shadow-[0_8px_20px_-6px_rgba(34,197,94,0.6)] flex items-center justify-center gap-2"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              Quero agora por {PRECO}
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* 1. HERO */}
-      <section className="pt-20 pb-24 md:pt-32 md:pb-32 px-4 relative">
+      <section ref={heroRef} className="pt-20 pb-24 md:pt-32 md:pb-32 px-4 relative">
         <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-secondary/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 pointer-events-none" />
         
@@ -193,18 +239,27 @@ export default function App() {
               <div className="flex items-center gap-3 font-semibold text-foreground/90"><CheckCircle2 className="w-6 h-6 text-secondary" /> Acesso imediato</div>
             </motion.div>
             
-            <motion.div variants={fadeIn} className="w-full sm:w-auto flex flex-col items-center gap-4">
-              <CtaButton />
-              <div className="flex items-center gap-2 mt-2">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                </span>
-                <span className="text-sm font-bold text-primary uppercase tracking-widest">
-                  Oferta por tempo limitado
-                </span>
+            {/* CARD DE PREÇO — igual ao site de referência */}
+            <motion.div variants={fadeIn} className="w-full max-w-sm bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg border border-border/60 px-6 py-5 flex flex-col items-center gap-3 mb-2">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 text-amber-400 fill-current" />)}
+                <span className="text-sm font-bold text-foreground/70 ml-2">4,9 · +{CLIENTES} professoras</span>
               </div>
+              <p className="text-xs font-bold uppercase tracking-widest text-foreground/40">ACESSO A PARTIR DE</p>
+              <p className="text-5xl font-extrabold text-primary leading-none">{PRECO_BASICO}</p>
+              <p className="text-sm text-foreground/50">pagamento único</p>
+              <CtaButton className="w-full" />
+              <p className="text-xs text-foreground/40 font-medium">+R$5,00 leva o Pacote Premium completo</p>
             </motion.div>
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+              </span>
+              <span className="text-sm font-bold text-primary uppercase tracking-widest">
+                Oferta por tempo limitado
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>

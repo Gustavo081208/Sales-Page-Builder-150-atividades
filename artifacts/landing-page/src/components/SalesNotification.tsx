@@ -6,8 +6,11 @@ import { ShoppingBag } from 'lucide-react';
 const NAMES = [
   'Ana Beatriz', 'Carla', 'Fernanda', 'Juliana', 'Mariana',
   'Patrícia', 'Renata', 'Camila', 'Larissa', 'Simone',
-  'Roberto', 'Carlos', 'Diego', 'Felipe', 'Gustavo',
-  'Lucas', 'Marcos', 'Pedro', 'Rafael', 'Thiago',
+  'Rosana', 'Aline', 'Beatriz', 'Claudia', 'Daniela',
+  'Elaine', 'Gabriela', 'Helena', 'Isabela', 'Jéssica',
+  'Karina', 'Letícia', 'Michele', 'Natália', 'Priscila',
+  'Rafaela', 'Sabrina', 'Tatiane', 'Viviane', 'Yasmin',
+  'Lucas', 'Rafael', 'Carlos',
 ];
 
 const REGIONS = [
@@ -53,8 +56,8 @@ function randomSale(id: number): Sale {
 }
 
 // ── component ────────────────────────────────────────────────────────────────
-const VISIBLE_MS  = 4000;   // quanto tempo fica visível
-const INTERVAL_MS = 6500;   // intervalo entre notificações
+const VISIBLE_MS  = 5000;   // quanto tempo fica visível
+const INTERVAL_MS = 40000;  // intervalo entre notificações (40 segundos)
 
 export default function SalesNotification() {
   const [sale, setSale] = useState<Sale | null>(null);
