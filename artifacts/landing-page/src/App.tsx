@@ -193,7 +193,7 @@ export default function App() {
             <motion.button
               onClick={scrollToOferta}
               whileTap={{ scale: 0.97 }}
-              className="w-full bg-green-500 hover:bg-green-400 text-white font-heading font-bold text-base py-4 px-6 rounded-2xl shadow-[0_8px_20px_-6px_rgba(34,197,94,0.6)] flex items-center justify-center gap-2"
+              className="floating-cta-pulse w-full bg-green-500 hover:bg-green-400 text-white font-heading font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2"
             >
               <ShoppingCart className="w-5 h-5" />
               Quero agora por {PRECO}
@@ -260,6 +260,86 @@ export default function App() {
                 Oferta por tempo limitado
               </span>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 1.5 GALERIA DE FOTOS — adicione suas fotos aqui */}
+      <section className="py-16 px-4 bg-white border-t border-border/40 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+            className="text-center mb-10"
+          >
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-2">Veja o material na prática</h2>
+            <p className="text-foreground/60 font-medium">Fotos reais de professoras usando as atividades em sala</p>
+          </motion.div>
+
+          {/* Grade de fotos — substitua as URLs pelas suas fotos */}
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
+          >
+            {[
+              { src: "", alt: "Foto 1 — substitua aqui" },
+              { src: "", alt: "Foto 2 — substitua aqui" },
+              { src: "", alt: "Foto 3 — substitua aqui" },
+              { src: "", alt: "Foto 4 — substitua aqui" },
+              { src: "", alt: "Foto 5 — substitua aqui" },
+              { src: "", alt: "Foto 6 — substitua aqui" },
+              { src: "", alt: "Foto 7 — substitua aqui" },
+              { src: "", alt: "Foto 8 — substitua aqui" },
+            ].map((photo, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn}
+                whileHover={{ scale: 1.03 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative aspect-square rounded-2xl overflow-hidden bg-primary/10 border-2 border-dashed border-primary/30 flex items-center justify-center group cursor-pointer"
+              >
+                {photo.src ? (
+                  <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="flex flex-col items-center gap-2 text-primary/50 p-4 text-center">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-xs font-bold">Adicione sua foto aqui</span>
+                  </div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Linha extra de fotos largas */}
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-4"
+          >
+            {[
+              { src: "", alt: "Foto destaque 1" },
+              { src: "", alt: "Foto destaque 2" },
+              { src: "", alt: "Foto destaque 3" },
+            ].map((photo, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn}
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative aspect-video rounded-2xl overflow-hidden bg-primary/10 border-2 border-dashed border-primary/30 flex items-center justify-center"
+              >
+                {photo.src ? (
+                  <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="flex flex-col items-center gap-2 text-primary/50 p-4 text-center">
+                    <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-xs font-bold">Adicione sua foto aqui (formato paisagem)</span>
+                  </div>
+                )}
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>

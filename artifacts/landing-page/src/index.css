@@ -44,36 +44,36 @@
 }
 
 :root {
-  /* Warm cream background */
-  --background: hsl(40 40% 97%); 
-  /* Deep slate text for contrast */
-  --foreground: hsl(222 47% 15%);
-  --border: hsl(40 20% 85%);
-  --input: hsl(40 20% 85%);
-  --ring: hsl(11 88% 62%);
+  /* Fundo rosinha suave — igual ao festalucrativa.shop */
+  --background: hsl(335 60% 97%);
+  /* Texto azul-marinho profundo */
+  --foreground: hsl(250 40% 18%);
+  --border: hsl(335 30% 87%);
+  --input: hsl(335 30% 87%);
+  --ring: hsl(330 75% 58%);
 
-  /* Pure white cards */
+  /* Cards brancos */
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(222 47% 15%);
-  --card-border: hsl(40 20% 85%);
+  --card-foreground: hsl(250 40% 18%);
+  --card-border: hsl(335 25% 88%);
 
-  /* Coral / Orange-Red Accent */
-  --primary: hsl(11 88% 62%);
+  /* Rosa quente — cor principal (igual ao festalucrativa.shop) */
+  --primary: hsl(330 75% 58%);
   --primary-foreground: hsl(0 0% 100%);
 
-  /* Teal / Blue Secondary Accent */
-  --secondary: hsl(175 75% 26%);
+  /* Roxo profundo — destaque secundário */
+  --secondary: hsl(250 55% 42%);
   --secondary-foreground: hsl(0 0% 100%);
 
-  /* High Contrast CTA (Bright Green) */
+  /* Verde vibrante — CTA de alta conversão */
   --cta: hsl(142 71% 45%);
   --cta-foreground: hsl(0 0% 100%);
 
-  --muted: hsl(40 20% 90%);
-  --muted-foreground: hsl(222 10% 45%);
+  --muted: hsl(335 25% 92%);
+  --muted-foreground: hsl(250 15% 48%);
 
-  --accent: hsl(11 88% 95%);
-  --accent-foreground: hsl(11 88% 40%);
+  --accent: hsl(330 75% 95%);
+  --accent-foreground: hsl(330 75% 40%);
 
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 100%);
@@ -93,4 +93,14 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading tracking-tight;
   }
+}
+
+/* Pulso no botão flutuante */
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); }
+  50%       { box-shadow: 0 0 0 14px rgba(34, 197, 94, 0); }
+}
+
+.floating-cta-pulse {
+  animation: cta-pulse 1.8s ease-in-out infinite;
 }
